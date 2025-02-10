@@ -6,10 +6,9 @@
     keyboards = {
       internalKeyboard = {
         extraDefCfg = "process-unmapped-keys yes";
-        # Remove `defcfg` from here and let Nix handle it automatically
         config = ''
 (defsrc
-  caps a s d f j k l ;
+  esc a s d f j k l ;
 )
 
 (defvar
@@ -18,7 +17,7 @@
 )
 
 (defalias
-  escctrl (tap-hold 100 100 esc lctl)
+  caps (one-shot 1 esc)
   a (multi f24 (tap-hold $tap-time $hold-time a lalt))
   s (multi f24 (tap-hold $tap-time $hold-time s lmet))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
@@ -30,7 +29,7 @@
 )
 
 (deflayer base
-  @escctrl @a @s @d @f @j @k @l @;
+  @caps @a @s @d @f @j @k @l @;
 )
         '';
       };
