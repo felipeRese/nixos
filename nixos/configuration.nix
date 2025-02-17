@@ -30,6 +30,8 @@
 
   programs.zsh.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -102,10 +104,19 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  environment.variables = {
+    GOPATH = "$HOME/go";
+    PATH = [
+      "$HOME/go/bin"
+    ];
+  };
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    insomnia
+    acpi
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
@@ -123,10 +134,12 @@
     geoclue2
     wdisplays
     socat
+    docker-client
 
     bun
     docker
 
+    codeblocks
     spotify
     slack
     obsidian

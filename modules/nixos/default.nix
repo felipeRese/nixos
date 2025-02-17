@@ -7,7 +7,7 @@ lib, config, ...
     ./hyprland/hyprland.nix
     ./kanata/kanata.nix
     ./tmux/tmux.nix
-    ./zsh/zsh.nix
     ./sddm/sddm.nix
+    ./zsh/zsh.nix
   ];
 }

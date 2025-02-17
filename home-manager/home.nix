@@ -126,9 +126,15 @@
       line_break.disabled = true;
     };
   };
-
-  programs.kitty.enable = true;
-
+  
+  programs.kitty = {
+    enable = true;
+    font = {
+      package = pkgs.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font";
+      size = 9;
+    };
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
