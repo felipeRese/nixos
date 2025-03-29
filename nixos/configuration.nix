@@ -15,8 +15,6 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -39,7 +37,7 @@
   time.timeZone = "America/Sao_Paulo";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";  
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.UTF-8";
@@ -61,6 +59,9 @@
     layout = "us";
     variant = "alt-intl";
   };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Configure console keymap
   console.keyMap = "us";
@@ -99,6 +100,8 @@
     ];
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -110,12 +113,14 @@
       "$HOME/go/bin"
     ];
   };
-
+services.udev.extraRules = ''
+  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="6964", ATTRS{idProduct}=="0075", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl" 
+'';
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    insomnia
+    postman
     acpi
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -134,10 +139,21 @@
     geoclue2
     wdisplays
     socat
-    docker-client
+    vial
+    microsoft-edge
+    yarn
+    pnpm
+    nautilus
+    notes
+    stremio
+    blueberry
+    gparted
+    ventoy-full
+
 
     bun
     docker
+    mysql84
 
     codeblocks
     spotify
