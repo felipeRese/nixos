@@ -120,6 +120,7 @@ services.udev.extraRules = ''
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    neovide
     postman
     acpi
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -149,6 +150,10 @@ services.udev.extraRules = ''
     blueberry
     gparted
     ventoy-full
+    exfatprogs
+    appimage-run
+    gh
+    dwt1-shell-color-scripts
 
 
     bun
