@@ -117,6 +117,11 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    neovide
+    exfatprogs
+    appimage-run
+    gh
+    dwt1-shell-color-scripts
     postman
     acpi
     vim  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
