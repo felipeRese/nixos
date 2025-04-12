@@ -5,11 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     # SDDM
     sddm-sugar-candy-nix = {
-    url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-    inputs.nixpkgs.follows = "nixpkgs";
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
 
     # home-manager, used for managing user configuration
     home-manager = {
@@ -27,14 +25,15 @@
   };
 
   outputs = { self, nixpkgs, home-manager, catppuccin, sddm-sugar-candy-nix, ... }@inputs: {
+
     nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+      # Configuration for your default machine (e.g. your notebook)
+      T480 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/T480/configuration.nix
 
           sddm-sugar-candy-nix.nixosModules.default
-
           {
             nixpkgs = {
               overlays = [
@@ -42,27 +41,61 @@
               ];
             };
           }
-
           catppuccin.nixosModules.catppuccin
-
           home-manager.nixosModules.home-manager
-
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.felipe = {
               imports = [
                 catppuccin.homeManagerModules.catppuccin
                 ./home-manager/home.nix
               ];
             };
-
-            home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
           }
         ];
         specialArgs = { inherit inputs; };
       };
+
+      # Configuration for your desktop (includes desktop-specific settings)
+      desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/desktop/configuration.nix
+          ./nixos/desktop.nix  # Create this file with desktop-specific overrides
+
+          sddm-sugar-candy-nix.nixosModules.default
+          {
+            nixpkgs = {
+              overlays = [
+                sddm-sugar-candy-nix.overlays.default
+              ];
+            };
+          }
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.felipe = {
+              imports = [
+                catppuccin.homeManagerModules.catppuccin
+                ./home-manager/home.nix
+              ];
+            };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+          }
+        ];
+        specialArgs = { inherit inputs; machineType = "desktop"; };
+      };
     };
   };
 }
+
