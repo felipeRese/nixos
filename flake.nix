@@ -66,7 +66,6 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/desktop/configuration.nix
-          ./nixos/desktop.nix  # Create this file with desktop-specific overrides
 
           sddm-sugar-candy-nix.nixosModules.default
           {

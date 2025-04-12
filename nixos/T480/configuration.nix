@@ -1,12 +1,12 @@
 { config, pkgs, inputs, ... }:
 
-in {
+{
   networking.hostName = "T480";
 
   imports = [
     ./hardware-configuration.nix
     # Include the common module.
-    ../modules/nixos/default.nix
+    ../../modules/nixos/default.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

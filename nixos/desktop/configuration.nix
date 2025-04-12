@@ -1,14 +1,14 @@
 { config, pkgs, inputs, ... }:
 
-in {
+{
   # Set the hostname explicitly for the final configuration.
-  networking.hostName = if isDesktop then "desktop" else "notebook";
+  networking.hostName = "felipeRese";
 
   imports = [
     # Import the machine-specific hardware configuration.
     ./hardware-configuration.nix
     # Include the common module.
-    ../modules/nixos/default.nix
+    ../../modules/nixos/default.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
