@@ -99,7 +99,6 @@
 
   hardware.keyboard.qmk.enable = true;
 
-  # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages
@@ -117,7 +116,9 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    google-chrome
     neovide
+    yazi
     exfatprogs
     appimage-run
     gh

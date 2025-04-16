@@ -34,6 +34,23 @@
     enableCompletion = true;
   };
 
+
+programs.tmux = {
+  enable = true;
+  extraConfig = ''
+    set -s escape-time 0
+  '';
+};
+
+programs.yazi = {
+  enable = true;
+  settings = {
+    manager = {
+      show_hidden = true;
+    };
+  };
+};
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
@@ -113,6 +130,9 @@
     enable = true;
     userName = "felipeRese";
     userEmail = "feliperese2018@gmail.com";
+    extraConfig = {
+      url."git@github.com:".insteadOf = "https://github.com/";
+    };
   };
 
   # starship - an customizable prompt for any shell

@@ -7,8 +7,6 @@
     plugins = [ ];
 
     settings = {
-      monitor = "eDP-1, 1920x1080@60, 0x0, 1";
-
       env = [
         "HYPRCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_THEME,Bibata-Modern-Ice"

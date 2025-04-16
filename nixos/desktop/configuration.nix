@@ -120,6 +120,7 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     neovide
+    yazi
     exfatprogs
     appimage-run
     gh
