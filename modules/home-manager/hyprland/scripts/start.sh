@@ -4,6 +4,8 @@ nm-applet --indicator &
 
 waybar &
 
+wleave -t 5000 &
+
 dunst &
 
 sleep 5s

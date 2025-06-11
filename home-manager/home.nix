@@ -1,10 +1,8 @@
 { config, system, pkgs, inputs, ... }:
-
 {
   imports = [
     ../modules/home-manager/default.nix
   ];
-
   home.username = "felipe";
   home.homeDirectory = "/home/felipe";
 
@@ -55,7 +53,29 @@ programs.yazi = {
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
+    lua-language-server
+    gdb
+    delve
+    vimPlugins.clangd_extensions-nvim
+    clang-tools
+    wayvnc
+    lua-language-server
+    rustup
+    typst
+    air
+    beekeeper-studio
+    wleave
+    curl
+    python312Packages.pynvim
+    python312Packages.requests-ntlm
+    k6
+    stremio
+    python312
+    pipx
+    python313Packages.pip
+    python312Packages.flask
 
+    
     neofetch
     nnn # terminal file manager
 
@@ -119,8 +139,23 @@ programs.yazi = {
     pciutils # lspci
     usbutils # lsusb
 
+    tinymist
+    lua-language-server
+
     # fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
+    glib
+    gobject-introspection
+    nss
+    nspr
+    dbus
+    atk
+    cairo
+    pango
+    cups
+    expat
+    libxkbcommon
   ];
 
   fonts.fontconfig.enable = true;
@@ -132,6 +167,7 @@ programs.yazi = {
     userEmail = "feliperese2018@gmail.com";
     extraConfig = {
       url."git@github.com:".insteadOf = "https://github.com/";
+      url."git@bitbucket.org:".insteadOf = "https://bitbucket.org/";
     };
   };
 
@@ -152,7 +188,7 @@ programs.yazi = {
     font = {
       package = pkgs.jetbrains-mono;
       name = "JetBrainsMono Nerd Font";
-      size = 9;
+      size = 10;
     };
   };
 

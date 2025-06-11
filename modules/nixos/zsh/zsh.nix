@@ -30,4 +30,17 @@
       theme = "cloud";
     };
   };
+  
+environment.shellAliases = {
+  ll  = "ls -alhF";
+  gs  = "git status";
+  vim = "nvim";
+  c = "clear";
+  crun = "bash ~/nixos/modules/nixos/zsh/crun.sh";
+
+  generate-pr = ''
+    (original_dir=$(pwd); cd ~/Programming/bitbucket-pull-request-generator; \
+    npm start -- --original-dir="$original_dir")
+  '';
+};
 }

@@ -7,6 +7,10 @@
     plugins = [ ];
 
     settings = {
+      monitor = [
+        "HDMI-1, 2560x1440@144, 1920x0, 1" 
+        "eDP-1, 1920x1080@60, 0x0, 1"
+      ];
       env = [
         "HYPRCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_THEME,Bibata-Modern-Ice"
@@ -18,13 +22,9 @@
       "$mod" = "SUPER";
 
       general = {
-        gaps_in = 2;
-        gaps_out = 4;
-
-        border_size = 1;
-
-        "col.active_border"   = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 0;
 
         layout = "dwindle";
       };
@@ -36,8 +36,6 @@
       decoration = {
         active_opacity   = 1;
         inactive_opacity = 1;
-
-        rounding = 5;
 
         blur = {
           enabled = true;
@@ -61,7 +59,7 @@
         "$mod, Space, exec, rofi -show drun -show-icons"
 
         # Lock screen
-        "$mod, L, exec, hyprlock"
+        "$mod, x, exec, hyprlock"
 
         # Set fullscreen
         "$mod, F, fullscreen"
@@ -75,12 +73,14 @@
         # Night light
         "$mod, p, exec, redshift -l -23.5505:-46.6333 -t 6500:3000"
 
+        "$mod, Y, exec, ~/nixos/modules/home-manager/hyprland/scripts/switch-to-colemak.sh"
+
 
         # Move focus with mainMod + arrow keys
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
+        "$mod, h, movefocus, l"
+        "$mod, j, movefocus, r"
+        "$mod, k, movefocus, u"
+        "$mod, l, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"

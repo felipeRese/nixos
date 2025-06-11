@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 
-{
+let unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   # Set the hostname explicitly for the final configuration.
   networking.hostName = "felipeRese";
 
@@ -119,7 +120,11 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    neovide
+    unstable.mongodb-compass
+    unstable.mongodb
+    unstable.neovim
+    unstable.vimPlugins.luau-lsp-nvim
+    google-chrome
     yazi
     exfatprogs
     appimage-run
@@ -137,7 +142,9 @@
     kitty
     lf
     tmux
-    neovim
+    tinymist
+    unstable.dbeaver-bin
+    postgresql_17_jit
     libnotify
     oh-my-zsh
     lazygit

@@ -2,259 +2,144 @@
 
 {
   home.file = {
-    # Waybar config
+
+    # Minimal Waybar config
     ".config/waybar/config.jsonc" = {
       text = ''
         // -*- mode: jsonc -*-
-{
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "hyprland/window"
-    ],
-    "modules-right": [
-        "tray",
-        "idle_inhibitor",
-        "pulseaudio",
-        "network",
-        "cpu",
-        "memory",
-        "temperature",
-        "hyprland/language",
-        "battery",
-        "battery#bat2",
-        "clock"
-    ],
-    //Modules configuration
-
-    "include": [
-		"~/.config/waybar/modules.json"
-	]
-}
+        {
+          "layer": "top",
+          "position": "top",
+          // auto height
+          "spacing": 2,
+          "modules-left": [
+            "hyprland/workspaces"
+          ],
+          "modules-center": [
+            "hyprland/window"
+          ],
+          "modules-right": [
+            "tray",
+            "battery",
+            "network",
+            "cpu",
+            "memory",
+            "pulseaudio",
+            "clock"
+          ],
+          "include": [
+            "~/.config/waybar/modules.json"
+          ]
+        }
       '';
     };
 
-    # A script used by Waybar (mark it executable if needed)
+    # Modules definitions
     ".config/waybar/modules.json" = {
       text = ''
         {
-    "custom/arch": {
-        "format": "󰣇",
-        "tooltip": true,
-        "tooltip-format": "btw"
-    },
+          "hyprland/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{name}",
+            "format-icons": {
+              "active": "",
+              "default": ""
+            }
+          },
+          "hyprland/window": {
+            "format": "{title}"
+          },
+          "tray": {},
 
+          "battery": {
+            "format": "{icon} {capacity}%",
+            "format-charging": " {capacity}%",
+            "format-full": " {capacity}%",
+            "tooltip": false,
+            "format-icons": ["","","","",""]
+          },
 
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{name}",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
+          "network": {
+            "format-wifi": " {signalStrength}%",
+            "tooltip": false
+          },
+
+          "cpu": {
+            "format": " {usage}%",
+            "tooltip": false
+          },
+
+          "memory": {
+            "format": " {usage}%",
+            "tooltip": false
+          },
+
+          "pulseaudio": {
+            "format": " {volume}%",
+            "tooltip": false,
+            "on-click": "pavucontrol"
+          },
+
+          "clock": {
+            "format": "{:%H:%M}",
+            "tooltip": false
+          }
         }
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{icon} {volume}%  {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "network": {
-        "format-wifi": "   {essid} ({signalStrength}%)",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-	"on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
-	 
-    },
-    "cpu": {
-        "format": "  {usage}%",
-        "tooltip": true
-    },
-    "memory": {
-        "format": "  {}%",
-	"tooltip": true
-    },
-    "temperature": {
-        "interval": 10,
-        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
-        "critical-threshold": 100,
-        "format-critical": " {temperatureC}",
-        "format": " {temperatureC}°C"
-    },
-    "hyprland/language": {
-       "format": "  {}",
-       "format-en": "EN",
-       "format-ru": "RU"
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{time}  {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "clock": {
-        "format": "{:%H:%M | %e %B} ",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    }
-
-}
       '';
       executable = true;
     };
 
-    # Waybar stylesheet
+    # Thin, zero-padding stylesheet with gray background, white text, and icon–text margin
     ".config/waybar/style.css" = {
       text = ''
-* {
-    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
-    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    transition: background-color .3s ease-out;
-}
+        * {
+          font-family: "JetBrainsMonoNF";
+          color: white;
+          font-size: 12px;
+        }
 
-window#waybar {
-    background: rgba(26, 27, 38, 0.75);
-    color: #c0caf5;
-    font-family: 
-        SpaceMono Nerd Font,
-        feather;
-    transition: background-color .5s;
-}
+        /* add space between icon and text */
+        .icon {
+          margin-right: 4px;
+        }
 
-.modules-left,
-.modules-center,
-.modules-right
-{
-    background: rgba(0, 0, 8, .7);
-    margin: 5px 10px;
-    padding: 0 5px;
-    border-radius: 15px;
-}
-.modules-left {
-    padding: 0;
-}
-.modules-center {
-    padding: 0 10px;
-}
+        window#waybar {
+          background: #1e1e2e;
+          color: #ffffff;
+        }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#language,
-#mpd {
-    padding: 0 10px;
-    border-radius: 15px;
-}
+        .modules-left,
+        .modules-center,
+        .modules-right {
+          background: transparent;
+          margin: 0;
+          padding: 0;
+          border-radius: 0;
+        }
 
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#disk:hover,
-#temperature:hover,
-#backlight:hover,
-#network:hover,
-#pulseaudio:hover,
-#wireplumber:hover,
-#custom-media:hover,
-#tray:hover,
-#mode:hover,
-#idle_inhibitor:hover,
-#scratchpad:hover,
-#power-profiles-daemon:hover,
-#language:hover,
-#mpd:hover {
-    background: rgba(26, 27, 38, 0.9);
-}
+        #workspaces button,
+        #window,
+        #tray,
+        #battery,
+        #network,
+        #cpu,
+        #memory,
+        #pulseaudio,
+        #clock {
+          padding: 0 5px;
+          border-radius: 0;
+        }
 
+        #workspaces button.active {
+          background: rgba(255,255,255,0.1);
+        }
 
-#workspaces button {
-  background: transparent;
-  font-family:
-    SpaceMono Nerd Font,
-    feather;
-  font-weight: 900;
-  font-size: 13pt;
-  color: #c0caf5;
-  border:none;
-  border-radius: 15px;
-}
-
-#workspaces button.active {
-    background: #13131d; 
-}
-
-#workspaces button:hover {
-  background: #11111b;
-  color: #cdd6f4;
-  box-shadow: none;
-}
-
-#custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
-    transition: color .5s;
-}
-#custom-arch:hover {
-    color: #1793d1;
-}
+        #workspaces button:hover {
+          background: rgba(255,255,255,0.15);
+        }
       '';
     };
+
   };
 }
-

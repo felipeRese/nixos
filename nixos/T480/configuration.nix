@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 
-{
+let unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   networking.hostName = "T480";
 
   imports = [
@@ -114,10 +115,15 @@
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="6964", ATTRS{idProduct}=="0075", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
 
+  environment.stub-ld.enable = true;
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    unstable.mongodb-compass
+    unstable.mongodb
+    unstable.neovim
+    unstable.vimPlugins.luau-lsp-nvim
     google-chrome
-    neovide
     yazi
     exfatprogs
     appimage-run
@@ -135,7 +141,9 @@
     kitty
     lf
     tmux
-    neovim
+    tinymist
+    unstable.dbeaver-bin
+    postgresql_17_jit
     libnotify
     oh-my-zsh
     lazygit
