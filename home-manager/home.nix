@@ -56,6 +56,8 @@ programs.yazi = {
     exfat
     fuse
     ventoy-full
+    jetbrains.idea-ultimate
+    jetbrains.idea-community-bin
     lua-language-server
     inxi
     gdb
