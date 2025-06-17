@@ -11,6 +11,9 @@ in {
     # Include the common module.
     ../../modules/nixos/default.nix
   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.05"
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -29,6 +32,7 @@ in {
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
 
   virtualisation.docker.enable = true;
 
@@ -123,7 +127,6 @@ in {
     unstable.mongodb-compass
     unstable.mongodb
     unstable.neovim
-    unstable.vimPlugins.luau-lsp-nvim
     google-chrome
     yazi
     exfatprogs
@@ -152,7 +155,6 @@ in {
     wdisplays
     socat
     vial
-    microsoft-edge
     yarn
     pnpm
     nautilus
@@ -160,7 +162,6 @@ in {
     stremio
     blueberry
     gparted
-    ventoy-full
     bun
     docker
     mysql84

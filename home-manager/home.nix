@@ -53,7 +53,11 @@ programs.yazi = {
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
+    exfat
+    fuse
+    ventoy-full
     lua-language-server
+    inxi
     gdb
     delve
     vimPlugins.clangd_extensions-nvim
@@ -63,7 +67,6 @@ programs.yazi = {
     rustup
     typst
     air
-    beekeeper-studio
     wleave
     curl
     python312Packages.pynvim
@@ -143,7 +146,7 @@ programs.yazi = {
     lua-language-server
 
     # fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
 
     glib
     gobject-introspection

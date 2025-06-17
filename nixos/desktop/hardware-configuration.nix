@@ -12,18 +12,14 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e78e71de-19ed-4741-a97a-ee40b2dbfdc0";
+    { device = "/dev/disk/by-uuid/221843a3-1972-4d25-b332-ed8729d4848d";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0751-7A70";
+    { device = "/dev/disk/by-uuid/A2F5-1B56";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
