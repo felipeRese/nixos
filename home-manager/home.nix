@@ -53,10 +53,31 @@ programs.yazi = {
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
+    openvpn
+    pavucontrol
+    jetbrains.goland
+    jetbrains.datagrip
+    skaffold
+    minikube
+    kubectl
+    ytermusic
+    google-cloud-sql-proxy
+    google-cloud-sdk
+    go-swag
+    super-productivity
+    fselect
+    uutils-coreutils-noprefix
+    zoxide
+    starship
+    ncspot
+    tokei
+    xh
+    zellij
+    keychain
+    air
     exfat
     fuse
     ventoy-full
-    jetbrains.idea-ultimate
     jetbrains.idea-community-bin
     lua-language-server
     inxi

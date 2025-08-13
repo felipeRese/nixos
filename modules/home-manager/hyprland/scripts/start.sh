@@ -2,6 +2,8 @@
 
 nm-applet --indicator &
 
+export NO_AT_BRIDGE=1
+
 waybar &
 
 wleave -t 5000 &

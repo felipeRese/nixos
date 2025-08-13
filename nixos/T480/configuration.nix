@@ -123,6 +123,7 @@ in {
     unstable.mongodb
     unstable.neovim
     unstable.vimPlugins.luau-lsp-nvim
+    home-manager
     google-chrome
     yazi
     exfatprogs
@@ -200,7 +201,8 @@ in {
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+  programs.ssh.startAgent = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

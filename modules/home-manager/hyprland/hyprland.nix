@@ -79,9 +79,9 @@
 
         # Move focus with mainMod + arrow keys
         "$mod, h, movefocus, l"
-        "$mod, j, movefocus, r"
+        "$mod, j, movefocus, d"
         "$mod, k, movefocus, u"
-        "$mod, l, movefocus, d"
+        "$mod, l, movefocus, r"
 
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"
