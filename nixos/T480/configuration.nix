@@ -152,7 +152,6 @@ in {
     wdisplays
     socat
     vial
-    microsoft-edge
     yarn
     pnpm
     nautilus
@@ -160,7 +159,6 @@ in {
     stremio
     blueberry
     gparted
-    ventoy-full
     bun
     docker
     mysql84

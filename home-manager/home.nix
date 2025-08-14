@@ -54,6 +54,7 @@ programs.yazi = {
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
     openvpn
+    kanata
     pavucontrol
     jetbrains.goland
     jetbrains.datagrip
@@ -77,7 +78,6 @@ programs.yazi = {
     air
     exfat
     fuse
-    ventoy-full
     jetbrains.idea-community-bin
     lua-language-server
     inxi

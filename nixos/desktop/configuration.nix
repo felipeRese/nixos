@@ -11,9 +11,6 @@ in {
     # Include the common module.
     ../../modules/nixos/default.nix
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.05"
-  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
