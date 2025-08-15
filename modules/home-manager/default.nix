@@ -10,5 +10,6 @@ lib, config, ...
     ./catppuccin/catppuccin.nix
     ./hyprlock/hyprlock.nix
     ./theme/theme.nix
+    ./nvim/nvim.nix
   ];
 }

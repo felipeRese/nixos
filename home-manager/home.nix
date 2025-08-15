@@ -6,21 +6,6 @@
   home.username = "felipe";
   home.homeDirectory = "/home/felipe";
 
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
-
-  # encode the file content in nix configuration file directly
-  # home.file.".xxx".text = ''
-  #     xxx
-  # '';
-
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
     "Xcursor.size" = 8;
@@ -32,27 +17,20 @@
     enableCompletion = true;
   };
 
-
-programs.tmux = {
-  enable = true;
-  extraConfig = ''
-    set -s escape-time 0
-  '';
-};
-
-programs.yazi = {
-  enable = true;
-  settings = {
-    manager = {
-      show_hidden = true;
+  programs.yazi = {
+    enable = true;
+    settings = {
+      manager = {
+        show_hidden = true;
+      };
     };
   };
-};
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
+    copyq
+    python313Packages.pip
+    zathura
     openvpn
     kanata
     pavucontrol
@@ -101,9 +79,8 @@ programs.yazi = {
     python313Packages.pip
     python312Packages.flask
 
-    
     neofetch
-    nnn # terminal file manager
+    nnn
 
     # archives
     zip
@@ -112,21 +89,21 @@ programs.yazi = {
     p7zip
 
     # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
+    ripgrep
+    jq
+    yq-go
+    eza
+    fzf
 
     # networking tools
-    mtr # A network diagnostic tool
+    mtr
     iperf3
-    dnsutils  # `dig` + `nslookup`
-    ldns # replacement of `dig`, it provide the command `drill`
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    dnsutils
+    ldns
+    aria2
+    socat
+    nmap
+    ipcalc
 
     # misc
     cowsay
@@ -140,30 +117,27 @@ programs.yazi = {
     gnupg
 
     # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
     nix-output-monitor
 
     # productivity
-    hugo # static site generator
-    glow # markdown previewer in terminal
+    hugo
+    glow
 
-    btop  # replacement of htop/nmon
-    iotop # io monitoring
-    iftop # network monitoring
+    btop
+    iotop
+    iftop
 
     # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
+    strace
+    ltrace
+    lsof
 
     # system tools
     sysstat
-    lm_sensors # for `sensors` command
+    lm_sensors
     ethtool
-    pciutils # lspci
-    usbutils # lsusb
+    pciutils
+    usbutils
 
     tinymist
     lua-language-server
@@ -182,11 +156,36 @@ programs.yazi = {
     cups
     expat
     libxkbcommon
+
+    # ---------- LaTeX (minimal but complete) ----------  <-- ADDED
+    (pkgs.texlive.combine {
+      inherit (pkgs.texlive)
+        # base scheme + latexmk
+        scheme-small
+        latexmk
+
+        # core LaTeX collections most docs expect
+        collection-basic
+        collection-latex
+        collection-latexrecommended
+        collection-fontsrecommended
+
+        # commonly used packages (adjust as you add \usepackage{...})
+        amsmath
+        geometry
+        hyperref
+        xcolor
+        cmap
+        csquotes;
+
+      # If you prefer XeLaTeX/LuaLaTeX later, also add:
+      # inherit (pkgs.texlive) xetex lualatex;
+    })
+    # ---------------------------------------------------
   ];
 
   fonts.fontconfig.enable = true;
 
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
     userName = "felipeRese";
@@ -197,10 +196,8 @@ programs.yazi = {
     };
   };
 
-  # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
-    # custom settings
     settings = {
       add_newline = false;
       aws.disabled = true;
@@ -218,16 +215,6 @@ programs.yazi = {
     };
   };
 
-  # This value determines the home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update home Manager without changing this value. See
-  # the home Manager release notes for a list of state version
-  # changes in each release.
   home.stateVersion = "24.11";
-
-  # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

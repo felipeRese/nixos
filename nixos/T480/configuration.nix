@@ -114,6 +114,46 @@ in {
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="6964", ATTRS{idProduct}=="0075", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
+   services.kanata = {
+    enable = true;
+    keyboards = {
+      internalKeyboard = {
+        devices = [
+          # Replace the paths below with the appropriate device paths for your setup.
+          # Use `ls /dev/input/by-path/` to find your keyboard devices.
+          "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:3:1.0-event-kbd"
+        ];
+        extraDefCfg = "process-unmapped-keys yes";
+        config = ''
+(defsrc
+  caps a s d f j k l ;
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  escctrl (tap-hold 100 100 esc lctl)
+  a  (multi f24 (tap-hold $tap-time $hold-time a  lalt))
+  s  (multi f24 (tap-hold $tap-time $hold-time s  lmet))
+  d  (multi f24 (tap-hold $tap-time $hold-time d  lsft))
+  f  (multi f24 (tap-hold $tap-time $hold-time f  lctl))
+  j  (multi f24 (tap-hold $tap-time $hold-time j  rctl))
+  k  (multi f24 (tap-hold $tap-time $hold-time k  rsft))
+  l  (multi f24 (tap-hold $tap-time $hold-time l  rmet))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; ralt))
+)
+
+(deflayer base
+  @escctrl @a @s @d @f @j @k @l @;
+)
+        '';
+      };
+    };
+  };
 
   environment.stub-ld.enable = true;
 
@@ -141,7 +181,6 @@ in {
     gcc
     kitty
     lf
-    tmux
     tinymist
     unstable.dbeaver-bin
     postgresql_17_jit

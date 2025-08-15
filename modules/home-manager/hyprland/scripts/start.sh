@@ -13,3 +13,5 @@ dunst &
 sleep 5s
 
 swww init
+
+sudo kanata -c ~/nixos/kanata

@@ -142,7 +142,6 @@ in {
     gcc
     kitty
     lf
-    tmux
     tinymist
     unstable.dbeaver-bin
     postgresql_17_jit

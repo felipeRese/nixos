@@ -30,6 +30,12 @@
           "include": [
             "~/.config/waybar/modules.json"
           ]
+          "tray": {
+              "icon-size": 16,
+              "spacing": 5,
+              "tooltip": true
+              "color": #000000
+          }
         }
       '';
     };
@@ -129,6 +135,7 @@
         #clock {
           padding: 0 5px;
           border-radius: 0;
+          color: #000000;
         }
 
         #workspaces button.active {
