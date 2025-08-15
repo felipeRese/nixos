@@ -161,7 +161,6 @@ in {
   environment.systemPackages = with pkgs; [
     unstable.mongodb-compass
     unstable.mongodb
-    unstable.neovim
     unstable.vimPlugins.luau-lsp-nvim
     home-manager
     google-chrome

@@ -123,7 +123,6 @@ in {
   environment.systemPackages = with pkgs; [
     unstable.mongodb-compass
     unstable.mongodb
-    unstable.neovim
     home-manager
     google-chrome
     yazi
