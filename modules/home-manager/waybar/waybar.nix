@@ -29,13 +29,12 @@
           ],
           "include": [
             "~/.config/waybar/modules.json"
-          ]
+          ],
           "tray": {
               "icon-size": 16,
               "spacing": 5,
-              "tooltip": true
-              "color": #000000
-          }
+              "tooltip": true,
+          },
         }
       '';
     };
@@ -101,7 +100,6 @@
       text = ''
         * {
           font-family: "JetBrainsMonoNF";
-          color: white;
           font-size: 12px;
         }
 
@@ -135,11 +133,14 @@
         #clock {
           padding: 0 5px;
           border-radius: 0;
-          color: #000000;
         }
 
         #workspaces button.active {
           background: rgba(255,255,255,0.1);
+        }
+
+        #workspaces button {
+          color: white;
         }
 
         #workspaces button:hover {

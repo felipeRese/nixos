@@ -207,9 +207,6 @@ in {
     whatsapp-for-linux
     # Hyprland utilities
     waybar
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
     hyprlock
     # Notification
     dunst
