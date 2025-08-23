@@ -13,10 +13,10 @@
         # "eDP-1, 1920x1080@60, 0x0, 1"
       ];
       env = [
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE, 24"
-        "HYPRCURSOR_SIZE, 24"
+        "HYPRCURSOR_THEME,GoogleDot-Black"
+        "XCURSOR_THEME,GoogleDot-Black"
+        "XCURSOR_SIZE, 22"
+        "HYPRCURSOR_SIZE, 22"
       ];
 
       # Define your main modifier.

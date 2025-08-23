@@ -3,8 +3,8 @@
 {
   gtk.enable = true;
 
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  gtk.cursorTheme.package = pkgs.google-cursor;
+  gtk.cursorTheme.name = "GoogleDot-Black";
 
   gtk.theme.package = pkgs.adw-gtk3;
   gtk.theme.name = "adw-gtk3";
@@ -17,4 +17,4 @@
   qt.style.name = "adwaita-dark";
 
   qt.style.package = pkgs.adwaita-qt;
-}
+} 
