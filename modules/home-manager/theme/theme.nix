@@ -3,8 +3,8 @@
 {
   gtk.enable = true;
 
-  gtk.cursorTheme.package = pkgs.google-cursor;
-  gtk.cursorTheme.name = "GoogleDot-Black";
+  gtk.cursorTheme.package = pkgs.quintom-cursor-theme;
+  gtk.cursorTheme.name = "Quintom_Ink";
 
   gtk.theme.package = pkgs.adw-gtk3;
   gtk.theme.name = "adw-gtk3";

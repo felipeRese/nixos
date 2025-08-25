@@ -13,14 +13,18 @@
         # "eDP-1, 1920x1080@60, 0x0, 1"
       ];
       env = [
-        "HYPRCURSOR_THEME,GoogleDot-Black"
-        "XCURSOR_THEME,GoogleDot-Black"
+        "HYPRCURSOR_THEME,Quintom_Ink"
+        "XCURSOR_THEME,Quintom_Ink"
         "XCURSOR_SIZE, 22"
         "HYPRCURSOR_SIZE, 22"
       ];
 
       # Define your main modifier.
       "$mod" = "SUPER";
+
+      cursor = {
+        no_hardware_cursors = true;
+      };
 
       general = {
         gaps_in = 0;

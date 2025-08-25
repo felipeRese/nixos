@@ -3,7 +3,7 @@
 {
   programs.kitty = {
     font = {
-      name = "JetBrainsMonoNerdFont";
+      name = "JetBrainsMonoThinNerdFont";
       size = "8";
     };
   };
