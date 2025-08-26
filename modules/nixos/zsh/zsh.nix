@@ -45,7 +45,9 @@
       (original_dir=$(pwd); cd ~/Programming/bitbucket-pull-request-generator; \
       npm start -- --original-dir="$original_dir")
     '';
+    utua-vpn = "openvpn3 session-start --config ~/Downloads/T480_felipe_rese@utua_com_br@utua.openvpn.com_[Sao_Paulo].ovpn && openvpn3 session-auth";
   };
+
 
   environment.variables = {
     GOPRIVATE = "git@bitbucket.org:tech-utua/*,bitbucket.org/tech-utua/*";

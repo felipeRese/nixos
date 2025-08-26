@@ -10,6 +10,8 @@ in {
     ../../modules/nixos/default.nix
   ];
 
+  boot.kernelModules = [ "tun" ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
@@ -32,6 +34,7 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -52,6 +55,8 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+
+  programs.openvpn3.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

@@ -14,6 +14,7 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  boot.kernelModules = [ "tun" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,6 +31,7 @@ in {
 
   programs.zsh.enable = true;
   programs.steam.enable = true;
+  programs.openvpn3.enable = true;
 
   virtualisation.docker.enable = true;
 

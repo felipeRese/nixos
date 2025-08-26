@@ -12,6 +12,7 @@
     "Xft.dpi" = 172;
   };
 
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -29,12 +30,15 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     cmake
+    neovide
+    pritunl-client
     impala
     nautilus
     clang-tools
     copyq
     python313Packages.pip
     zathura
+    openvpn3
     openvpn
     kanata
     pavucontrol
