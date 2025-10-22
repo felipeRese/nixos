@@ -12,7 +12,6 @@
     "Xft.dpi" = 172;
   };
 
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -29,6 +28,9 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    thunderbird
+    ngrok
+    kitty-themes
     cmake
     neovide
     pritunl-client
@@ -42,8 +44,6 @@
     openvpn
     kanata
     pavucontrol
-    jetbrains.goland
-    jetbrains.datagrip
     skaffold
     minikube
     kubectl
@@ -216,6 +216,7 @@
   
   programs.kitty = {
     enable = true;
+    themeFile = "Afterglow";
     font = {
       package = pkgs.jetbrains-mono;
       name = "JetBrainsMono Nerd Font";

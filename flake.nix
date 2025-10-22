@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # SDDM
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
@@ -11,7 +12,7 @@
 
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,9 +23,15 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    # Stylix (input present, but do NOT import its Home Manager module from the flake)
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, sddm-sugar-candy-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, sddm-sugar-candy-nix, stylix, ... }@inputs: {
 
     nixosConfigurations = {
       # Configuration for your default machine (e.g. your notebook)
@@ -41,6 +48,10 @@
               ];
             };
           }
+
+          # Keep the Stylix NixOS module available if you want system-level activation
+          stylix.nixosModules.stylix
+
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
@@ -50,6 +61,7 @@
               imports = [
                 catppuccin.homeManagerModules.catppuccin
                 ./home-manager/home.nix
+                # NOTE: removed `stylix.homeManagerModules.stylix` here to avoid Home Manager option mismatches
               ];
             };
             home-manager.extraSpecialArgs = {
@@ -75,6 +87,10 @@
               ];
             };
           }
+
+          # Stylix NixOS module (optional/system-level)
+          stylix.nixosModules.stylix
+
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
@@ -84,6 +100,7 @@
               imports = [
                 catppuccin.homeManagerModules.catppuccin
                 ./home-manager/home.nix
+                # NOTE: stylix.homeManagerModules.stylix removed here as well
               ];
             };
             home-manager.extraSpecialArgs = {
@@ -97,4 +114,3 @@
     };
   };
 }
-

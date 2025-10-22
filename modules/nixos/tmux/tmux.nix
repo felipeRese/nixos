@@ -17,7 +17,8 @@
     '';
 
     plugins = with pkgs; [
-      tmuxPlugins.catppuccin
+      tmuxPlugins.resurrect
+      tmuxPlugins.tmux-nova
     ];
   };
 }

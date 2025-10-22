@@ -207,7 +207,6 @@ in {
     mysql84
     codeblocks
     spotify
-    slack
     obsidian
     whatsapp-for-linux
     # Hyprland utilities
