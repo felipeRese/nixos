@@ -29,6 +29,10 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    thunderbird
+    codex
+    zulu17
+    jetbrains.clion
     cmake
     neovide
     pritunl-client
