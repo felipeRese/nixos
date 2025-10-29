@@ -31,6 +31,9 @@
     thunderbird
     ngrok
     kitty-themes
+    codex
+    zulu17
+    jetbrains.clion
     cmake
     neovide
     pritunl-client
