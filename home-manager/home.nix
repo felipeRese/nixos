@@ -28,32 +28,8 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    thunderbird
-    ngrok
-    kitty-themes
-    codex
-    zulu17
-    jetbrains.clion
-    cmake
-    neovide
-    pritunl-client
-    impala
-    nautilus
-    clang-tools
-    copyq
-    python313Packages.pip
-    zathura
-    openvpn3
-    openvpn
-    kanata
-    pavucontrol
-    skaffold
-    minikube
-    kubectl
-    ytermusic
-    google-cloud-sql-proxy
-    google-cloud-sdk
-    go-swag
+    scrcpy
+    slack
     super-productivity
     fselect
     uutils-coreutils-noprefix
