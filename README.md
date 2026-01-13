@@ -1,4 +1,0 @@
-# nixos
-# nixos
-# nixos
-# nixos

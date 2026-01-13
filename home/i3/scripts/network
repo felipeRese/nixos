@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+case $BLOCK_BUTTON in
+  1) nm-connection-editor ;;
+  3) nm-applet --indicator ;;
+esac
+
+IFACE=$(nmcli -t -f DEVICE,STATE device | awk -F: '$2=="connected"{print $1; exit}')
+
+if [ -z "$IFACE" ]; then
+  echo "󰤮 Disconnected"
+  exit 0
+fi
+
+TYPE=$(nmcli -t -f DEVICE,TYPE device | awk -F: -v d="$IFACE" '$1==d{print $2}')
+NAME=$(nmcli -t -f DEVICE,CONNECTION device | awk -F: -v d="$IFACE" '$1==d{print $2}')
+
+if [ "$TYPE" = "wifi" ]; then
+  SIGNAL=$(nmcli -t -f IN-USE,SIGNAL dev wifi | awk -F: '$1=="*" {print $2}')
+  echo "󰤨 $NAME ($SIGNAL%)"
+else
+  echo "󰈀 $NAME"
+fi
+

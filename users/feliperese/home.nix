@@ -1,0 +1,16 @@
+{pkgs, ...}: {
+  imports = [
+    ../../home/core.nix
+
+    ../../home/i3
+    ../../home/programs
+    ../../home/rofi
+    ../../home/shell
+  ];
+
+
+  programs.git = {
+    userName = "Felipe Rese";
+    userEmail = "feliperese2018@gmail.com";
+  };
+}
