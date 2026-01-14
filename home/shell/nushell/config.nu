@@ -76,7 +76,7 @@ $env.config.history.isolation = true
 # ----------------------
 
 # show_banner (bool): Enable or disable the welcome banner at startup
-$env.config.show_banner = true
+$env.config.show_banner = false
 
 # rm.always_trash (bool):
 # true: rm behaves as if the --trash/-t option is specified
@@ -566,6 +566,7 @@ $env.config.highlight_resolved_externals = true
 # "light-theme". For example:
 use std/config dark-theme
 $env.config.color_config = (dark-theme)
+$env.config.color_config = ($env.config.color_config | upsert glob $env.config.color_config.shape_globpattern)
 
 # Or, individual color settings can be configured or overridden.
 #

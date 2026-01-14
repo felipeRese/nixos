@@ -21,6 +21,9 @@
     ripgrep
     yq-go # https://github.com/mikefarah/yq
     htop
+    gcc
+    go
+    gopls
 
     # misc
     libnotify
@@ -35,7 +38,7 @@
 
     # productivity
     obsidian
-    codex
+    discord
 
     # IDE
     insomnia

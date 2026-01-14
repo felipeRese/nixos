@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case "$(hostname)" in
+  T480|t480) ;;
+  *) exit 0 ;;
+esac
+
+if ! command -v xrandr >/dev/null 2>&1; then
+  exit 0
+fi
+
+internal_output="$(xrandr --query | awk '/ connected/ {print $1}' | awk '/^(eDP|LVDS)/ {print $1; exit}')"
+if [[ -z "$internal_output" ]]; then
+  internal_output="$(xrandr --query | awk '/ connected/ {print $1; exit}')"
+fi
+
+if [[ -z "$internal_output" ]]; then
+  exit 0
+fi
+
+external_output="$(xrandr --query | awk -v internal="$internal_output" '/ connected/ {print $1}' | awk -v internal="$internal_output" '$1 != internal && $1 !~ /^(eDP|LVDS)/ {print $1; exit}')"
+
+if [[ -n "$external_output" ]]; then
+  xrandr --output "$internal_output" --primary --auto \
+    --output "$external_output" --auto --right-of "$internal_output"
+else
+  xrandr --output "$internal_output" --primary --auto
+fi

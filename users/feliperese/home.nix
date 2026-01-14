@@ -13,5 +13,6 @@
   programs.git = {
     userName = "Felipe Rese";
     userEmail = "feliperese2018@gmail.com";
+    url."git@bitbucket.org:".insteadOf = "https://bitbucket.org/";
   };
 }
