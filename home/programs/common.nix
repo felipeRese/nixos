@@ -31,6 +31,7 @@
     upower
     acpi
     gnugrep
+    xclip
 
     # productivity
     obsidian

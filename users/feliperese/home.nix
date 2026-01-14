@@ -6,6 +6,7 @@
     ../../home/programs
     ../../home/rofi
     ../../home/shell
+    ../../home/shell/nushell
   ];
 
 
