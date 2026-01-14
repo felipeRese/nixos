@@ -586,9 +586,9 @@ $env.config.color_config = (dark-theme)
 # foreground, background, and cursor colors are not handled by Nushell, but can be used by
 # custom-commands such as `theme` from the nu_scripts repository. That `theme` command can be
 # used to set the terminal foreground, background, and cursor colors.
-$env.config.color_config.foreground
-$env.config.color_config.background
-$env.config.color_config.cursor
+# $env.config.color_config.foreground
+# $env.config.color_config.background
+# $env.config.color_config.cursor
 
 # -------------------------------------------------------------------------------------------------
 # shape_: Applies syntax highlighting based on the "shape" (inferred or declared type) of an

@@ -1,28 +1,27 @@
 { pkgs, ... }:
 
-# terminals
-
 let
   font = "JetBrainsMono Nerd Font";
 in
 {
-  programs.alacritty = {
+  programs.kitty = {
     enable = true;
+
+    font = {
+      name = font;
+      size = 11;
+    };
+
     settings = {
-      window.opacity = 1;
-      window.padding = {
-        x = 0;
-        y = 0;
-      };
-      scrolling.history = 10000;
+      # Window
+      background_opacity = "1.0";
+      window_padding_width = 0;
 
-      font = {
-        normal.family = font;
-        bold.family = font;
-        italic.family = font;
-        size = 11;
-      };
+      # Scrollback
+      scrollback_lines = 10000;
 
+      # Shell (start directly in Nushell)
+      shell = "nu";
     };
   };
 }
